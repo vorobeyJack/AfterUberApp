@@ -1,6 +1,6 @@
 const http = require('../services/http');
 const {BASE_UBER_API_URL} = require('../constants');
-const {getResponse} = require('../services/price/resultPriceDataFormatter');
+const {getListWithDiscount} = require('../services/price/withDiscountDataFormatter');
 
 /**
  *
@@ -13,7 +13,7 @@ module.exports = {
         )
             .then(({data: {prices}}) => {
                 res.send({
-                    data: getResponse(prices),
+                    data: getListWithDiscount(prices),
                     code: 200
                 });
             })
