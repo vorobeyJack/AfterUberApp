@@ -1,11 +1,12 @@
-const {APP_API_PREFIX} = require('../constants');
-const priceController = require('../controllers/priceController');
+import {APP_API_PREFIX} from "../constants";
+import {getPrice} from "../controllers/priceController";
 
 /**
+ *
  * @param router
  */
-module.exports = (router) => {
+export const matchAPIRoutes = router => {
     router
         .route(`${APP_API_PREFIX}/price`)
-        .get(priceController.getPrice);
+        .get(getPrice);
 };

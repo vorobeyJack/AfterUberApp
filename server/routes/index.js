@@ -1,5 +1,9 @@
-const api = require('./api');
+import {matchAPIRoutes} from './api';
 
-module.exports = (router) => {
-    api(router);
+/**
+ *
+ * @param router
+ */
+export const getRoutesHandlers = router => {
+    matchAPIRoutes(router);
 };

@@ -1,6 +1,6 @@
-const express = require("express");
-const routes = require('./routes/');
-const bodyParser = require('body-parser');
+import express from 'express';
+import {getRoutesHandlers} from './routes';
+import bodyParser from 'body-parser';
 
 const app = express();
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 let port = process.env.PORT || 5000;
 
 /** set up routes {API Endpoints} */
-routes(router);
+getRoutesHandlers(router);
 
 app.use(bodyParser.json());
 app.use('/', router);
