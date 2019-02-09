@@ -1,1 +1,1 @@
-export const SERVER_TOKEN = 'YourServerToken';
+export const UBER_SERVER_TOKEN = 'YourUberServerToken';
