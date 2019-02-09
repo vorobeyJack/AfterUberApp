@@ -1,3 +1,1 @@
-module.exports = {
-    SERVER_TOKEN: 'SecretServerToken'
-};
+export const UBER_SERVER_TOKEN = 'YourUberServerToken';

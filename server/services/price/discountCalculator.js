@@ -1,19 +1,13 @@
 /**
  *
- * @type {{getPriceWithDiscount: (function(*=, *=): number)}}
+ * @param price
+ * @param discountPercent
+ * @returns {*}
  */
-module.exports = {
-    /**
-     *
-     * @param price
-     * @param discountPercent
-     * @returns {number|null}
-     */
-    getPriceWithDiscount: (price, discountPercent = 0.2) => {
-        if (null !== price) {
-            return (parseFloat(price) * (1 - discountPercent)).toFixed(2);
-        }
-
-        return null;
+export const getPriceWithDiscount = (price, discountPercent = 0.2) => {
+    if (null !== price) {
+        return (parseFloat(price) * (1 - discountPercent)).toFixed(2);
     }
+
+    return null;
 };

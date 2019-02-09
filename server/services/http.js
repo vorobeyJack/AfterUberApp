@@ -1,29 +1,24 @@
-const axios = require('axios');
-const {SERVER_TOKEN} = require('../constants');
+import axios from 'axios';
+import {UBER_SERVER_TOKEN} from '../../config/auth';
 
 /**
- * @type {{executeRequest: (function(*, *=, *): *)}}
+ *
+ * @param url
+ * @param method
+ * @param data
+ * @returns {AxiosPromise}
  */
-module.exports = {
-    /**
-     *
-     * @param url
-     * @param method
-     * @param data
-     * @returns {*}
-     */
-    executeRequest: (url, method = 'GET', data) => {
-        const headers = {
-            'Authorization': `Token ${SERVER_TOKEN}`,
-            'Accept-Language': 'en_US',
-            'Content-Type': 'application/json',
-        };
+export const executeRequest = (url, method = 'GET', data) => {
+    const headers = {
+        'Authorization': `Token ${UBER_SERVER_TOKEN}`,
+        'Accept-Language': 'en_US',
+        'Content-Type': 'application/json',
+    };
 
-        return axios({
-            method,
-            url,
-            data,
-            headers
-        });
-    }
+    return axios({
+        method,
+        url,
+        data,
+        headers
+    });
 };

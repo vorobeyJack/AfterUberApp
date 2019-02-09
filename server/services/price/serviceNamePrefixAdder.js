@@ -1,16 +1,10 @@
-const {DISPLAY_NAME_PREFIX} = require('../../constants');
+import {DISPLAY_NAME_PREFIX} from '../../constants';
 
 /**
  *
- * @type {{getNameWithPrefix: (function(*): string)}}
+ * @param name
+ * @returns {string}
  */
-module.exports = {
-    /**
-     *
-     * @param name
-     * @returns {string}
-     */
-    getNameWithPrefix: (name) => {
-        return `${DISPLAY_NAME_PREFIX}${name}`;
-    }
+export const getNameWithPrefix = name => {
+    return `${DISPLAY_NAME_PREFIX}${name}`;
 };
