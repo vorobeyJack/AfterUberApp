@@ -5,9 +5,9 @@ import taxi from '../taxi.png';
  *
  * @param displayName
  * @param distance
- * @param currency_code
- * @param high_estimate
- * @param low_estimate
+ * @param currencyCode
+ * @param highEstimate
+ * @param lowEstimate
  * @param duration
  * @returns {*}
  * @constructor
@@ -23,12 +23,10 @@ export const PriceItem = (
     }) => {
     return (
         <div className="item">
-            <div className="ui tiny image">
-                <img src={taxi}/>
-            </div>
-            <div className="middle aligned content">
-                <h2>{highEstimate}</h2>
-                <h5>{displayName}</h5>
+            <img src={taxi} className='ui avatar image'/>
+            <div className="content">
+                <div className="header">{highEstimate} {currencyCode} | {displayName}</div>
+                Duration:~ {duration}
             </div>
         </div>
     );

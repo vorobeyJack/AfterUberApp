@@ -9,7 +9,7 @@ import {PriceItem} from './PriceItem';
  */
 export const PriceItemsList = ({items}) => {
     return (
-        <div className="ui divided items">
+        <div className="ui middle aligned animated list">
             {items.map((
                 {
                     display_name,
@@ -23,7 +23,7 @@ export const PriceItemsList = ({items}) => {
                     key={display_name}
                     displayName={display_name}
                     distance={distance}
-                    currency_code={currency_code}
+                    currencyCode={currency_code}
                     highEstimate={high_estimate}
                     lowEstimate={low_estimate}
                     duration={duration}

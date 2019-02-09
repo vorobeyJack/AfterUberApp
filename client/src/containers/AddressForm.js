@@ -90,30 +90,29 @@ export default class AddressForm extends React.Component {
 
         return (
             <Fragment>
-                <div>
-                    <GoogleComponent
-                        apiKey={GOOGLE_API_KEY}
-                        language={'en'}
-                        coordinates={true}
-                        onChange={this.handleInputFrom}
-                    />
-
-                    <GoogleComponent
-                        apiKey={GOOGLE_API_KEY}
-                        language={'en'}
-                        coordinates={true}
-                        // locationBoxStyle={'custom-style'}
-                        // locationListStyle={'custom-style-list'}
-                        onChange={this.handleInputTo}
-                    />
-                    <button className="fluid ui button"
-                            onClick={this.handleRequest}
-                            disabled={!this.isValidForm()}
-                    >GET PRICE
-                    </button>
+                <div className="ui grid">
+                    <div className="ui form nine wide column left">
+                        <GoogleComponent
+                            apiKey={GOOGLE_API_KEY}
+                            language={'en'}
+                            coordinates={true}
+                            onChange={this.handleInputFrom}
+                        />
+                        <GoogleComponent
+                            apiKey={GOOGLE_API_KEY}
+                            language={'en'}
+                            coordinates={true}
+                            onChange={this.handleInputTo}
+                        />
+                        <button className="fluid ui button"
+                                onClick={this.handleRequest}
+                                disabled={!this.isValidForm()}
+                        >GET PRICE
+                        </button>
+                        <ToastContainer autoClose={3000}/>
+                    </div>
+                    {pricesBlock}
                 </div>
-                <ToastContainer autoClose={3000}/>
-                {pricesBlock}
             </Fragment>
         )
     }
