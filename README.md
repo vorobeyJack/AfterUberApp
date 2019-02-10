@@ -16,10 +16,10 @@
 To install dependencies
 
 ```shell
-npm install
+npm run load
 ```
 
-Also, you have to:
+Also, you have to(before npm start):
 - copy server/config/auth.js.dist && client/src/config/auth.js.dist to auth.js
 - Paste the following creds into these files:
 
