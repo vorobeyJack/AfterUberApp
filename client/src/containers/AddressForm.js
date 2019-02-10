@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 import {Dimmer, Loader} from 'semantic-ui-react';
 import {GoogleComponent} from 'react-google-location';
 import {GOOGLE_API_KEY} from '../config/auth';
@@ -23,6 +24,20 @@ export default class AddressForm extends React.Component {
         isError: false,
         errorMessage: null,
 
+    };
+
+    static propTypes = {
+        placeFrom: PropTypes.string,
+        placeTo: PropTypes.string,
+        items: PropTypes.arrayOf(PropTypes.shape({
+            display_name: PropTypes.string.isRequired,
+            distance: PropTypes.number.isRequired,
+            currency_code: PropTypes.string.isRequired,
+            high_estimate: PropTypes.number.isRequired,
+            low_estimate: PropTypes.number.isRequired,
+            estimate: PropTypes.string.isRequired,
+            duration: PropTypes.number.isRequired
+        }))
     };
 
     /**

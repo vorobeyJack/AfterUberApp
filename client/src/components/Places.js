@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  *
@@ -8,6 +9,12 @@ import React from 'react';
  * @constructor
  */
 export const Places = ({placeFrom, placeTo}) => {
+
+    Places.propTypes = {
+        placeFrom: PropTypes.string.isRequired,
+        placeTo: PropTypes.string.isRequired
+    };
+
     return (
         <div className="ui grid">
             <div className="ui form nine wide column left">
