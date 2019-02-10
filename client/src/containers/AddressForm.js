@@ -6,7 +6,7 @@ import {toast} from 'react-toastify';
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {PriceItemsList} from '../components/PriceItemsList';
-import {BASE_BACKEND_API_URL, DATA_NOT_FOUND_ERROR_MESSAGE} from '../constants';
+import {BASE_BACKEND_API_URL, SERVICE_UNAVAILABLE_ERROR_MESSAGE} from '../constants';
 import axios from 'axios';
 
 export default class AddressForm extends React.Component {
@@ -68,7 +68,6 @@ export default class AddressForm extends React.Component {
         axios
             .get(`${BASE_BACKEND_API_URL}/price?start_latitude=${start_latitude}&start_longitude=${start_longitude}&end_latitude=${end_latitude}&end_longitude=${end_longitude}`)
             .then(({data: {data}}) => {
-                console.log(data);
                 if (data.length > 0) {
                     this.setState({
                         start_latitude: '',
@@ -79,9 +78,10 @@ export default class AddressForm extends React.Component {
                 } else {
                     this.setState({
                         isError: true,
-                        errorMessage: DATA_NOT_FOUND_ERROR_MESSAGE,
+                        errorMessage: SERVICE_UNAVAILABLE_ERROR_MESSAGE,
                         isLoading: false
                     });
+                    toast.error(SERVICE_UNAVAILABLE_ERROR_MESSAGE);
                 }
             })
             .catch(err => {
@@ -115,7 +115,7 @@ export default class AddressForm extends React.Component {
         return (
             <Fragment>
                 <div className="ui grid">
-                    <div className="ui form nine wide column left">
+                    <div className="ui form six wide column left">
                         <GoogleComponent
                             apiKey={GOOGLE_API_KEY}
                             language={'en'}
@@ -128,10 +128,11 @@ export default class AddressForm extends React.Component {
                             coordinates={true}
                             onChange={this.handleInputTo}
                         />
-                        <button className="fluid ui button"
-                                onClick={this.handleRequest}
-                                disabled={!this.isValidForm()}
-                        >GET PRICE
+                        <button
+                            className="fluid ui button"
+                            onClick={this.handleRequest}
+                            disabled={!this.isValidForm()}>
+                            GET PRICE
                         </button>
                         <ToastContainer autoClose={3000}/>
                     </div>

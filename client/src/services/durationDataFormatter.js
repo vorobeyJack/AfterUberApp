@@ -4,7 +4,7 @@
  * @returns {string}
  */
 export const getDuration = duration => {
-    const resultDuration = duration / 60;
+    const resultDuration = parseInt(duration) / 60;
 
     if (resultDuration > 60) {
         const hourDuration = (resultDuration / 60).toFixed(1);
