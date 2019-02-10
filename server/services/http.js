@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {UBER_SERVER_TOKEN} from '../../config/auth';
+import {UBER_SERVER_TOKEN} from '../config/auth';
 
 /**
  *
@@ -13,6 +13,7 @@ export const executeRequest = (url, method = 'GET', data) => {
         'Authorization': `Token ${UBER_SERVER_TOKEN}`,
         'Accept-Language': 'en_US',
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
     };
 
     return axios({
