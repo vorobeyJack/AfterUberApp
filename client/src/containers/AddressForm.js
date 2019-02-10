@@ -7,7 +7,7 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {PriceItemsList} from '../components/PriceItemsList';
 import {Places} from '../components/Places';
-import {BASE_BACKEND_API_URL, SERVICE_UNAVAILABLE_ERROR_MESSAGE} from '../constants';
+import {BASE_BACKEND_API_URL, SERVICE_UNAVAILABLE_ERROR_MESSAGE, SERVER_ERROR_MESSAGE} from '../constants';
 import axios from 'axios';
 
 export default class AddressForm extends React.Component {
@@ -95,15 +95,25 @@ export default class AddressForm extends React.Component {
                 }
             })
             .catch(err => {
-                const {data: {message: {message}}} = err.response;
-                this.setState({
-                    start_latitude: '',
-                    end_latitude: '',
-                    isError: true,
-                    errorMessage: message,
-                    isLoading: false
-                });
-                toast.error(message);
+                // in case of 500 error from server
+                if (undefined === err.response) {
+                    this.setState({
+                        isError: true,
+                        errorMessage: SERVER_ERROR_MESSAGE,
+                        isLoading: false
+                    });
+                    toast.error(SERVER_ERROR_MESSAGE);
+                } else {
+                    const {data: {message: {message}}} = err.response;
+                    this.setState({
+                        start_latitude: '',
+                        end_latitude: '',
+                        isError: true,
+                        errorMessage: message,
+                        isLoading: false
+                    });
+                    toast.error(message);
+                }
             })
     };
 
