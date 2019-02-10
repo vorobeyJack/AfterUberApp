@@ -10,8 +10,8 @@ export const getListWithDiscount = prices => {
     return prices.map(price => ({
         ...price,
         display_name: getNameWithPrefix(price.display_name),
-        low_estimate: getPriceWithDiscount(price.low_estimate),
-        high_estimate: getPriceWithDiscount(price.high_estimate),
+        low_estimate: price.low_estimate,
+        high_estimate: price.high_estimate,
         estimate: `${getPriceWithDiscount(price.low_estimate)} - ${getPriceWithDiscount(price.high_estimate)}`
     }));
 };
