@@ -1,4 +1,4 @@
-# AfterUber test app.
+# AfterUber app.
 
 # Used technologies
 
