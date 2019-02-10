@@ -6,6 +6,7 @@ import {toast} from 'react-toastify';
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {PriceItemsList} from '../components/PriceItemsList';
+import {Places} from '../components/Places';
 import {BASE_BACKEND_API_URL, SERVICE_UNAVAILABLE_ERROR_MESSAGE} from '../constants';
 import axios from 'axios';
 
@@ -15,29 +16,38 @@ export default class AddressForm extends React.Component {
         start_longitude: '',
         end_latitude: '',
         end_longitude: '',
+        displayNameFrom: '',
+        displayNameTo: '',
+        priceItems: [],
         isLoading: false,
         isError: false,
         errorMessage: null,
-        priceItems: []
+
     };
 
     /**
+     *
      * @param coordinates
+     * @param place
      */
-    handleInputFrom = ({coordinates}) => {
+    handleInputFrom = ({coordinates, place}) => {
         this.setState({
             start_latitude: coordinates.lat,
             start_longitude: coordinates.lng,
+            displayNameFrom: place
         });
     };
 
     /**
+     *
      * @param coordinates
+     * @param place
      */
-    handleInputTo = ({coordinates}) => {
+    handleInputTo = ({coordinates, place}) => {
         this.setState({
             end_latitude: coordinates.lat,
             end_longitude: coordinates.lng,
+            displayNameTo: place
         });
     };
 
@@ -98,8 +108,8 @@ export default class AddressForm extends React.Component {
     };
 
     render() {
-        const {isLoading, priceItems, isError} = this.state;
-        let pricesBlock = null;
+        const {isLoading, priceItems, isError, displayNameFrom, displayNameTo} = this.state;
+        let pricesBlock, places = null;
         if (isLoading) {
             return (
                 <Dimmer active>
@@ -108,12 +118,14 @@ export default class AddressForm extends React.Component {
             )
         }
 
-        if (priceItems && !isError) {
+        if (priceItems.length !== 0 && !isError) {
             pricesBlock = <PriceItemsList items={priceItems}/>;
+            places = <Places placeFrom={displayNameFrom} placeTo={displayNameTo}/>
         }
 
         return (
             <Fragment>
+                {places}
                 <div className="ui grid">
                     <div className="ui form six wide column left">
                         <GoogleComponent
