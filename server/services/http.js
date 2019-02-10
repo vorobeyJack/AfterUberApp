@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {UBER_SERVER_TOKEN} from '../../config/auth';
+import {UBER_SERVER_TOKEN} from '../config/auth';
 
 /**
  *

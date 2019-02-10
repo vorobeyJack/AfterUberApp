@@ -17,6 +17,7 @@ export const PriceItemsList = ({items}) => {
                     currency_code,
                     high_estimate,
                     low_estimate,
+                    estimate,
                     duration
                 }) => {
                 return <PriceItem
@@ -26,6 +27,7 @@ export const PriceItemsList = ({items}) => {
                     currencyCode={currency_code}
                     highEstimate={high_estimate}
                     lowEstimate={low_estimate}
+                    estimate={estimate}
                     duration={duration}
                 />
             })}

@@ -26,6 +26,10 @@
     margin-bottom: 50px;
 }
 
+.location-box-cover {
+    margin: 15px 0;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

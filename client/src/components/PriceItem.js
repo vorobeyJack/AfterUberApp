@@ -1,5 +1,6 @@
 import React from 'react';
 import taxi from '../taxi.png';
+import {getDuration} from '../services/durationDataFormatter';
 
 /**
  *
@@ -8,6 +9,7 @@ import taxi from '../taxi.png';
  * @param currencyCode
  * @param highEstimate
  * @param lowEstimate
+ * @param estimate
  * @param duration
  * @returns {*}
  * @constructor
@@ -19,14 +21,15 @@ export const PriceItem = (
         currencyCode,
         highEstimate,
         lowEstimate,
+        estimate,
         duration
     }) => {
     return (
         <div className="item">
             <img src={taxi} className='ui avatar image'/>
             <div className="content">
-                <div className="header">{highEstimate} {currencyCode} | {displayName}</div>
-                Duration:~ {duration}
+                <div className="header">{estimate} {currencyCode} | {displayName}</div>
+                Duration:~ {getDuration(duration)}
             </div>
         </div>
     );
